@@ -9,7 +9,7 @@
  *******************************************************************************/
 
 // const esprima = require('esprima');
-const esprima = require("espree");
+const espree = require("espree");
 const fs = require('fs');
 const vueParser = require('vue-parser');
 const prep = require('./srcPreprocessor');
@@ -291,7 +291,7 @@ function parse(src) {
     //     range: true,
     //     jsx: true
     // });
-    return esprima.parse(src, {
+    return espree.parse(src, {
         loc: true,
         range: true,
         jsx: true,
@@ -339,7 +339,7 @@ function buildProgram (fname, src) {
         prog = parse(src);
     }
     catch(err) {
-        reportError('Warning: Esprima failed to parse ' + fname, err);
+        reportError('Warning: Espree failed to parse ' + fname, err);
         return null;
     }
     prog.attr = {filename: fname};
